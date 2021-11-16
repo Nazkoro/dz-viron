@@ -13,12 +13,6 @@ function getRandomInt() {
     line.push(getRandomInt())
   }
 
-//   start.innerHTML = `
-//     <p>привет</p>
-//   `
-//   start.innerHTML = `
-//     <p>привет</p>
-//   `
   start.textContent = line
   
 

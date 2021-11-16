@@ -77,7 +77,7 @@ function uncompress(str){
 	
 	let arr2 = str.split('')
     console.log(arr2);
-
+	debugger;
 	    for (let k =0; k<arr2.length; k++){
         if (arr2[k] !== arr2[k+1] && typeof arr2[k] === 'string' && arr2[k+1] !== undefined && typeof Number(arr2[k+1]) ==='number' ){
             console.log('keklol',k ,arr2[k],arr2[k+1]) ;
