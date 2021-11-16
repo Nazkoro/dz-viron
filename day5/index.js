@@ -1,43 +1,38 @@
 //1
-// numbers = [2, 3, 5, 7, 11, 13, 17, 19];
 
-// function currentSums(numbers) {
-//     let arr = [];
 
-//     numbers.reduce((sum, current) => {
+function currentSums(numbers) {
+    let arr = [];
+
+    numbers.reduce((sum, current) => {
             
-//             arr.push(sum);
-//             return sum + current;
+            arr.push(sum);
+            return sum + current;
             
-//     })
-//     console.log(arr);
-//     return arr;
+    })
+    console.log(arr);
+    return arr;
     
-// }
-// currentSums(numbers)
+}
+currentSums([2, 3, 5, 7, 11, 13, 17, 19])
 
 
 
 
 //2
-// Имеется массив простых чисел: numbers = [2, 3, 5, 7, 11, 13, 17, 19].
-//  Используя метод reduce(), создаем функцию currentSums(numbers), 
-//  которая возвращает новый массив из такого же числа элементов,
-//   в котором на каждой позиции будет находиться сумма элементов массива numbers
-//    до этой позиции включительно.
-// Т.е. для numbers = [2, 3, 5, 7, 11, 13, 17] мы должны увидеть,
-//  вызвав currentSums(numbers):
 
-// [2, 2+3, 2+3+5, 2+3+5+7, 2+3+5+7+11, 2+3+5+7+11+13, 2+3+5+7+11+13+17]
-//  = [ 2,5,10,17,28,41,58]
 
-// function strTrim(str){
-//   let newArr = str.split(' ')
-//   let result = newArr.filter(item => newArr.split('').push(item[0]))
-//   console.log(result);
-// }
+function strTrim(str){
+  let newArr = str.split(' ');
 
-// strTrim('Каждый охотник желает знать, где сидит фазан.')
+  let arr = [];
+  let result = newArr.filter(item => arr.push((item[0].split('')))
+  
+    )
+  console.log(arr.flat());
+}
+
+strTrim('Каждый охотник желает знать, где сидит фазан.')
 
 
 
