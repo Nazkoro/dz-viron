@@ -23,6 +23,4 @@ function quadraticEquation(a, b, c) {
      
 }
 
-// var fizz = ["fizz"], buzz = ["buzz"];
-// for(var i = 1; i < 100; i++) document.write((((fizz[i % 3] || "") + (buzz[i % 5] || "")) || i) + " ");
 

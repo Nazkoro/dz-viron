@@ -1,11 +1,35 @@
 let container =  document.querySelector('.container')
-let month = prompt('Введите месяц')
-let year = prompt('Введите год')
+let listItem =  document.querySelectorAll('.list_item')
+let el = document.getElementById('my_slect');
+let inp =  document.querySelector('.inp');
+
+let month = 12;
+let year =2021;
+
+el.addEventListener( 'click' , fMonth)
+inp.addEventListener( 'click' , fyear)
+
+function fMonth () {
+  el.onchange= e=>{
+ console.log(e.target.value);
+ month =  e.target.value
+};
+pushCalendar()
+}
+
+function fyear () {
+  inp.onchange = e => {
+    console.log(e.target.value);
+    year  = e.target.value
+  }
+  pushCalendar()
+
+  
+};
 
 
-
-
-
+    function pushCalendar() {
+      
     let mon = month - 1; // месяцы в JS идут от 0 до 11, а не от 1 до 12
     let d = new Date(year, mon);
 
@@ -40,6 +64,7 @@ let year = prompt('Введите год')
     table += '</tr></table>';
 
     container.innerHTML = table;
+    }
 
 
   function getDay(date) { // получить номер дня недели, от 0 (пн) до 6 (вс)
@@ -48,7 +73,7 @@ let year = prompt('Введите год')
     return day - 1;
   }
 
- 
+ pushCalendar()
 
-
+  
 

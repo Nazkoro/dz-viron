@@ -45,9 +45,7 @@ function changeArr(arr2){
     let rightArr = [];
  
     let len = arr2.length;
-
     let middle = Math.round(len/2);
-
 
     for (let i = 0; i < arr2.length; i++) {
         if(len %2 ===0 && i < middle){
@@ -69,12 +67,9 @@ function changeArr(arr2){
     }
 
     if(len %2 !==0 ){
-
         rightArr.push(arr2[middle-1])
-
     }
 
-    // rightArr.concat(leftArr)
     let result = rightArr.concat(leftArr)
     console.log(result);
     return result
