@@ -1,22 +1,72 @@
+const selectMonth = document.querySelector('.select_month')
+const selectYear = document.querySelector('.select_year')
+const btnAddCalendar = document.querySelector('.btn')
+const btnRemoveCalendar = document.querySelector('.btn-remove')
+const main = document.querySelector('.main')
+let countCalendar = 3
+
+
+        const  month=["Выбрать месяц","Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
+		 const arrYears =[
+			'Выбрать год','1980',
+			'1981','1982', '1983',
+			'1984','1985', '1986',
+			'1987','1988', '1989',
+			'1990','1991', '1992',
+			'1993','1994', '1995',
+			'1996','1997', '1998',
+			'1999','2000', '2001',
+			'2002','2003', '2004',
+			'2005','2006', '2007',
+			'2008','2009', '2010',
+			'2011','2012', '2013',
+			'2014','2015', '2016',
+			'2017','2018', '2019',
+			'2020','2021', 
+			]
+			// arrYears.innerHTML = '';
+			for (let i = 0; i < arrYears.length; i++) {
+				selectYear.innerHTML +=`<option value="${arrYears[i]}">${arrYears[i]}</option>`
+			}
+			for (let i = 0; i < month.length; i++) {
+				
+				selectMonth.innerHTML +=`<option value="${i===0?'Выбрать месяц':i-1}">${month[i]}</option>`
+
+			}
 
     class Calendar{
 
+
         calendar = '<tr>';
         month=["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
+		 arrYears =[
+			'Выбрать год','1980',
+			'1981','1982', '1983',
+			'1984','1985', '1986',
+			'1987','1988', '1989',
+			'1990','1991', '1992',
+			'1993','1994', '1995',
+			'1996','1997', '1998',
+			'1999','2000', '2001',
+			'2002','2003', '2004',
+			'2005','2006', '2007',
+			'2008','2009', '2010',
+			'2011','2012', '2013',
+			'2014','2015', '2016',
+			'2017','2018', '2019',
+			'2020','2021', 
+			]
 
         constructor(year,month) {
- 
             this.Dlast = new Date(year,month+1,0).getDate();
             this.D = new Date(year,month,this.Dlast);
             this.DNlast = new Date(this.D.getFullYear(),this.D.getMonth(),this.Dlast).getDay();
             this.DNfirst = new Date(this.D.getFullYear(),this.D.getMonth(),1).getDay();
-            console.log(this.Dlast,this.D ,this.DNlast ,this.DNfirst );
-            console.log(this.D);
-        }
-        
 
+        }
         showCalendar(id){
-            console.log(this.Dlast,this.D ,this.DNlast ,this.DNfirst );
+
+
             if (this.DNfirst != 0) {
                 for(let  i = 1; i < this.DNfirst; i++) this.calendar = this.calendar + '<td>';
               }else{
@@ -35,9 +85,7 @@
               }
           
               for(let  i = this.DNlast; i < 7; i++) this.calendar = this.calendar + '<td>&nbsp;';
-              console.log(this.calendar);
-              console.log(document.querySelector('#'+id+' tbody'));
-              console.log(id);
+
               document.querySelector('#'+id+' tbody').innerHTML = this.calendar;
               document.querySelector('#'+id+' thead td:nth-child(3)').innerHTML = this.month[this.D.getMonth()] +' '+ this.D.getFullYear() + ' года';
               document.querySelector('#'+id+' thead td:nth-child(3)').dataset.month = this.D.getMonth();
@@ -46,33 +94,81 @@
               if (document.querySelectorAll('#'+id+' tbody tr').length < 6) {  // чтобы при перелистывании месяцев не "подпрыгивала" вся страница, добавляется ряд пустых клеток. Итог: всегда 6 строк для цифр
                   document.querySelector('#'+id+' tbody').innerHTML += '<tr><td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;';
               }
-
         }
-
     }
 
   let objCalendar = new Calendar(new Date().getFullYear(), new Date().getMonth()) ;
   objCalendar.showCalendar('calendar2');
 
-    document.querySelector('#calendar2 thead tr:nth-child(1) td:nth-child(2)').onclick = function() {
-        let objCalendar = new Calendar(document.querySelector('#calendar2 thead td:nth-child(3)').dataset.year, parseFloat(document.querySelector('#calendar2 thead td:nth-child(3)').dataset.month)-1) ;
+    document.querySelector('.calendar thead tr:nth-child(1) td:nth-child(2)').onclick = function() {
+        let objCalendar = new Calendar(document.querySelector('.calendar thead td:nth-child(3)').dataset.year, parseFloat(document.querySelector('.calendar thead td:nth-child(3)').dataset.month)-1) ;
         objCalendar.showCalendar('calendar2');
       }
       // переключатель плюс месяц
-      document.querySelector('#calendar2 thead tr:nth-child(1) td:nth-child(4)').onclick = function() {
-        let objCalendar = new Calendar(document.querySelector('#calendar2 thead td:nth-child(3)').dataset.year, parseFloat(document.querySelector('#calendar2 thead td:nth-child(3)').dataset.month)+1) ;
+      document.querySelector('.calendar thead tr:nth-child(1) td:nth-child(4)').onclick = function() {
+        let objCalendar = new Calendar(document.querySelector('.calendar thead td:nth-child(3)').dataset.year, parseFloat(document.querySelector('.calendar thead td:nth-child(3)').dataset.month)+1) ;
         objCalendar.showCalendar('calendar2');
         
       }
 
-      
-    document.querySelector('#calendar2 thead tr:nth-child(1) td:nth-child(1)').onclick = function() {
-        let objCalendar = new Calendar(parseFloat(document.querySelector('#calendar2 thead td:nth-child(3)').dataset.year)-1, document.querySelector('#calendar2 thead td:nth-child(3)').dataset.month) ;
+    document.querySelector('.calendar thead tr:nth-child(1) td:nth-child(1)').onclick = function() {
+        let objCalendar = new Calendar(parseFloat(document.querySelector('.calendar thead td:nth-child(3)').dataset.year)-1, document.querySelector('.calendar thead td:nth-child(3)').dataset.month) ;
         objCalendar.showCalendar('calendar2');
       }
       // переключатель плюс месяц
-      document.querySelector('#calendar2 thead tr:nth-child(1) td:nth-child(5)').onclick = function() {
-        let objCalendar = new Calendar(parseFloat(document.querySelector('#calendar2 thead td:nth-child(3)').dataset.year)+1, document.querySelector('#calendar2 thead td:nth-child(3)').dataset.month) ;
+      document.querySelector('.calendar thead tr:nth-child(1) td:nth-child(5)').onclick = function() {
+        let objCalendar = new Calendar(parseFloat(document.querySelector('.calendar thead td:nth-child(3)').dataset.year)+1, document.querySelector('.calendar thead td:nth-child(3)').dataset.month) ;
         objCalendar.showCalendar('calendar2');
         
       }
+
+
+	  btnAddCalendar.addEventListener('click', () => {
+			main.innerHTML +=`<table id="calendar${countCalendar}" class="calendar">
+					<thead>
+					<tr><td><<<td><<td colspan="5"><td>><td>>>
+					<tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+					<tbody>
+ 					</table>`
+		  let objCalendar = new Calendar(+selectYear.value, +selectMonth.value) ;
+ 			 objCalendar.showCalendar(`calendar${countCalendar}`)
+
+			  main.childNodes.length === 0 ?
+		btnRemoveCalendar.setAttribute("disabled", true) :
+		 btnRemoveCalendar.removeAttribute("disabled")
+
+			  countCalendar++
+	  })
+
+	  	btnRemoveCalendar.addEventListener('click' , () => {
+		console.log('main.firstChild',main);
+	
+		if(main.childNodes.length){
+			main.firstChild.remove()
+		} 
+		
+		main.childNodes.length === 0 ?
+		btnRemoveCalendar.setAttribute("disabled", true) :
+		 btnRemoveCalendar.removeAttribute("disabled")
+	  })
+
+	  document.addEventListener('change' , () => {
+		if (selectMonth.value === "Выбрать месяц"|| selectYear.value ==='Выбрать год'){
+			 btnAddCalendar.setAttribute("disabled", true);
+		 } else btnAddCalendar.removeAttribute("disabled")
+	  })
+
+	  //change backgroung color calendar td
+	  main.addEventListener('click', (e) => {
+
+		let table = e.target.closest("table")
+		let td = table.querySelectorAll('td')
+
+		if(table.id){
+			for(let i =0; i< td.length;i++){
+				td[i].classList.remove('active')
+			}
+		}			
+		  e.target.classList.add('active')
+	  })
+

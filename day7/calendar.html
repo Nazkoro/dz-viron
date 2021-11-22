@@ -10,21 +10,26 @@
     <title>Document</title>
 </head>
 <body>
-   
-<!-- 
-        <table id="calendar2">
-          <thead>
-            <tr><td>‹<td colspan="5"><td>›
-            <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
-          <tbody>
-        </table> -->
 
-        <table id="calendar2">
+	
+   <header>
+	   <label for="months">Месяц</label>
+		<select name="months" class="select_month"></select>
+		<label for="years">Год</label>
+		<select name="years" class="select_year"></select>
+
+		<button class="btn" disabled>Создать</button>
+		<button class="btn-remove" >Удалить</button>
+   </header>
+   <main class="main">
+	<table id="calendar2" class="calendar">
             <thead>
               <tr><td><<<td><<td colspan="5"><td>><td>>>
               <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
             <tbody>
-          </table>
+ </table>
+   </main>
+
         
      
 </body>
