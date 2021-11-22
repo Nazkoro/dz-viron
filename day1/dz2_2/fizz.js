@@ -1,4 +1,4 @@
-
+//solution 1
 function fizzBuzz(){
 for(let i =0; i<100;i++){
     if(i%3 ===0 && i%5 ===0){
@@ -14,7 +14,7 @@ for(let i =0; i<100;i++){
 }
 }
 fizzBuzz()
-
+//solution 2
 
 for (let i = 1; i <= 100; i++) {
     console.log((i % 3 === 0 && i % 5 === 0 && 'fizzbuzz') || (i % 3 === 0 && 'fizz') || (i % 5 === 0 && 'buzz') || i);

@@ -3,7 +3,7 @@ const selectYear = document.querySelector('.select_year')
 const btnAddCalendar = document.querySelector('.btn')
 const btnRemoveCalendar = document.querySelector('.btn-remove')
 const main = document.querySelector('.main')
-let countCalendar = 3
+let countCalendar = 2
 
 
         const  month=["Выбрать месяц","Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
@@ -39,23 +39,6 @@ let countCalendar = 3
 
         calendar = '<tr>';
         month=["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
-		 arrYears =[
-			'Выбрать год','1980',
-			'1981','1982', '1983',
-			'1984','1985', '1986',
-			'1987','1988', '1989',
-			'1990','1991', '1992',
-			'1993','1994', '1995',
-			'1996','1997', '1998',
-			'1999','2000', '2001',
-			'2002','2003', '2004',
-			'2005','2006', '2007',
-			'2008','2009', '2010',
-			'2011','2012', '2013',
-			'2014','2015', '2016',
-			'2017','2018', '2019',
-			'2020','2021', 
-			]
 
         constructor(year,month) {
             this.Dlast = new Date(year,month+1,0).getDate();
@@ -96,7 +79,7 @@ let countCalendar = 3
               }
         }
     }
-
+//исходные данные
   let objCalendar = new Calendar(new Date().getFullYear(), new Date().getMonth()) ;
   objCalendar.showCalendar('calendar2');
 
@@ -123,13 +106,16 @@ let countCalendar = 3
       }
 
 
+//эксперимент
+	
 	  btnAddCalendar.addEventListener('click', () => {
+			++countCalendar
 			main.innerHTML +=`<table id="calendar${countCalendar}" class="calendar">
-					<thead>
-					<tr><td><<<td><<td colspan="5"><td>><td>>>
-					<tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
-					<tbody>
- 					</table>`
+						<thead>
+						<tr><td class="left-year"><<<td class="left-month"><<td colspan="5"><td class="right-month">><td class="right-year">>>
+						<tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+						<tbody>
+					 `
 		  let objCalendar = new Calendar(+selectYear.value, +selectMonth.value) ;
  			 objCalendar.showCalendar(`calendar${countCalendar}`)
 
@@ -137,7 +123,7 @@ let countCalendar = 3
 		btnRemoveCalendar.setAttribute("disabled", true) :
 		 btnRemoveCalendar.removeAttribute("disabled")
 
-			  countCalendar++
+			//   countCalendar++
 	  })
 
 	  	btnRemoveCalendar.addEventListener('click' , () => {
@@ -158,6 +144,9 @@ let countCalendar = 3
 		 } else btnAddCalendar.removeAttribute("disabled")
 	  })
 
+
+
+	  
 	  //change backgroung color calendar td
 	  main.addEventListener('click', (e) => {
 
@@ -172,3 +161,40 @@ let countCalendar = 3
 		  e.target.classList.add('active')
 	  })
 
+//начало эксперимента
+	// let objCalendar = new Calendar(new Date().getFullYear(), new Date().getMonth()) ;
+	// objCalendar.showCalendar('calendar2');
+
+	// document.querySelector(`#calendar${countCalendar} .left-month`).onclick = function() {
+	// 	console.log(1);
+	// 	let objCalendar = new Calendar(document.querySelector(`#calendar${countCalendar} thead td:nth-child(3)`).dataset.year, parseFloat(document.querySelector(`#calendar${countCalendar} thead td:nth-child(3)`).dataset.month)-1) ;
+	// 	objCalendar.showCalendar(`calendar${countCalendar}`);
+	// }
+	// // переключатель плюс месяц
+	// document.querySelector('.calendar thead tr:nth-child(1) td:nth-child(4)').onclick = function() {
+	// 	let objCalendar = new Calendar(document.querySelector('.calendar thead td:nth-child(3)').dataset.year, parseFloat(document.querySelector('.calendar thead td:nth-child(3)').dataset.month)+1) ;
+	// 	objCalendar.showCalendar('calendar2');
+		
+	// }
+
+	// document.querySelector('.calendar thead tr:nth-child(1) td:nth-child(1)').onclick = function() {
+	// 	let objCalendar = new Calendar(parseFloat(document.querySelector('.calendar thead td:nth-child(3)').dataset.year)-1, document.querySelector('.calendar thead td:nth-child(3)').dataset.month) ;
+	// 	objCalendar.showCalendar('calendar2');
+	// }
+	// // переключатель плюс месяц
+	// document.querySelector('.calendar thead tr:nth-child(1) td:nth-child(5)').onclick = function() {
+	// 	let objCalendar = new Calendar(parseFloat(document.querySelector('.calendar thead td:nth-child(3)').dataset.year)+1, document.querySelector('.calendar thead td:nth-child(3)').dataset.month) ;
+	// 	objCalendar.showCalendar('calendar2');
+		
+	// }
+
+	// main.addEventListener('click', (e) => {
+
+	// 		let table = e.target.closest("table")
+	// 		let id = table.id
+	// 		(`id `)
+			
+	// 	})
+
+
+//конец эксперимента

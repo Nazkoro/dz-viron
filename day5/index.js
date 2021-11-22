@@ -1,42 +1,25 @@
 //1
-
-
 function currentSums(numbers) {
     let arr = [];
-
-    numbers.reduce((sum, current) => {
-            
-            arr.push(sum);
-            return sum + current;
-            
+    numbers.reduce((sum, current) => { 
+        arr.push(sum);
+        return sum + current;
     })
     console.log(arr);
     return arr;
-    
 }
 currentSums([2, 3, 5, 7, 11, 13, 17, 19])
-
-
-
-
-//2
 
 
 function strTrim(str){
   let newArr = str.split(' ');
 
   let arr = [];
-  let result = newArr.filter(item => arr.push((item[0].split('')))
-  
-    )
+  let result = newArr.filter(item => arr.push(item[0].split('')))
   console.log(arr.flat());
 }
 
 strTrim('Каждый охотник желает знать, где сидит фазан.')
-
-
-
-
 
 //3
 function changeArr(arr2){

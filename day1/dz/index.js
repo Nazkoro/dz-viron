@@ -1,56 +1,47 @@
-// Задание
-
-// Создать страницу и написать javascript-сценарий, который спросит у пользователя:
-// фамилию, имя, отчество РАЗДЕЛЬНО (тремя запросами prompt());
-// возраст в годах (через prompt());
-// пол (используя confirm(), например, "Ваш пол - мужской?");
-// и выведет с помощью alert() анкету пользователя по примеру:
+let validationFalse = false
+do {
  
-// Ваше ФИО: Иванов Иван Иванович 
-// Ваш возраст в годах: 20 
-// Ваш возраст в днях: 7300 
-// Вы уже совершеннолетний
-// Ваш пол: мужской 
-// Вы на пенсии: нет
+  validationFalse = false
  
-// Пенсионным считать возраст для обоих полов одинаковым и большим или равным 60 годам. Совершеннолетие >18 лет.
-//  Обязательно проверять вводимые данные от пользователя на не-число/число, на логичность, на длину (касается ФИО). 
-
-let surname = prompt('фамилия');
-let name = prompt('Имя');
-let  patronymic = prompt(' Отчество');
-
-let  age = prompt('Возраст');
-
-let sex = confirm('Ваш пол - мужской?');
-let day =age *365;
-
-let res = sex? 'мужской': 'женский';
-if(surname.length <3 && name.length<3 && patronymic.length <3  ) {
+  const surname = prompt('фамилия');
+  const name = prompt('Имя');
+  const  patronymic = prompt(' Отчество');
+  
+  if(surname.length <3 || name.length<3 || patronymic.length <3  ) {
     alert('ФИО длжны быть запонены')
-}
-console.log(age);
-age = +age
-if(  age <2 || age >115) {
-    alert('Диапозон возраста от 1 до 114')
-}
-
-// typeof age === 'number' &&
-let pension = age > 60 ? 'да': 'нет'
-
-let response = new Map([
-    ["Ваше ФИО", `${surname} ${name} ${patronymic}`],
-    ["Ваш возраст в годах", age],
-    ["Ваш возраст в днях",     day],
-    [`Вы  ${age>18? ' уже совершеннолетний':'несовершеннолетний'}`],
-    ["Ваш пол",    res],
-    ["Вы на пенсии",    pension]
-  ]);
-console.log(response);
-
-for (let entry of response) { // то же самое, что и recipeMap.entries()
-    alert(entry); // огурец,500 (и так далее)
+    validationFalse = true
   }
+  const  age = prompt('Возраст');
+
+  if(  age <2 || age >115) {
+    alert('Диапозон возраста от 1 до 114')
+    validationFalse = true
+  }
+
+  const sex = confirm('Ваш пол - мужской?');
+  const res = sex? 'мужской': 'женский';
+
+  const day =age *365;
+  const pension = age > 60 ? 'да': 'нет'
+
+  if(!validationFalse){
+    let response = new Map([
+      ["Ваше ФИО", ` ${surname} ${name} ${patronymic}`],
+      ["Ваш возраст в годах", age],
+      ["Ваш возраст в днях", day],
+      [`Вы  ${age>18? ' уже совершеннолетний':' несовершеннолетний'}`],
+      ["Ваш пол",   res],
+      ["Вы на пенсии",  pension]
+    ]);
+    let output = ''
+    for (let entry of response) {
+      output +=entry + '\n'
+    }
+    const newstr = output.replace(/,/gi, ':')
+    alert(newstr)
+  }
+} while(validationFalse)
+
 
 
 
