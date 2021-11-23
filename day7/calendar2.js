@@ -83,7 +83,6 @@ class Calendar{
 			this.printCalendar(id)
 	}
 	
-
 }
 
 	header.addEventListener('click', (e) => {
