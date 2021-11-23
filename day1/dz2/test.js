@@ -1,5 +1,5 @@
 
-let  numer = prompt('ведите номер');
+const  numer = prompt('ведите номер');
 
 let arr2 = numer.split('').map(Number);
 
