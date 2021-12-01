@@ -22,6 +22,19 @@ main{
 
 	border: 3px solid black;
 }
+.full-container{
+	height: 800px;
+}
+
+.modal-full{
+	padding: 10px;
+	width: 200px;
+	height:700px;
+	display: none;
+	flex-wrap: wrap;
+	justify-content: center;
+	border: 3px solid black;
+}
 .close{
 	margin: 5px 0 0 10px;
 	height: 14px;
@@ -35,5 +48,11 @@ main{
 .btn_element{
 	width: 140px;
 	height: 24px;
+}
 
+.close-full {
+	display: none;
+	justify-content: right;
+	border: 2px solid black;
+	cursor: pointer;
 }

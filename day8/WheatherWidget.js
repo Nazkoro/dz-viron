@@ -1,13 +1,10 @@
 const modal = document.querySelector('.modal')
-const main = document.querySelector('.main')
-
-
+const modalFull = document.querySelector('.modal-full')
 
 export class WheatherWidget {
     key = '6d21c3a258af6885acaa2c45a49a091d'
     icon = 'http://openweathermap.org/img/wn/'
     
-
     constructor(city, lang ){
         this.city = city
         this.lang = lang
@@ -17,6 +14,7 @@ export class WheatherWidget {
 
     async getWheather (){
         let response = await fetch(this.url);
+        
         let response3Days = await fetch(this.url3Day);
         this.objWheather = await (response.json()); // прочитать тело ответа как текст
          console.log(this.objWheather);
@@ -44,8 +42,8 @@ export class WheatherWidget {
         `  
     }
 
-
     printWheaterfor3Days() {
+        modalFull.innerHTML =''
         let arrayList = this.objWheather3Days.list
         console.log(arrayList);
         let arraywheatherSort = []
@@ -65,10 +63,10 @@ export class WheatherWidget {
             let celcia = element.main.temp -273
             let wind = element.wind.speed
 
-            main.innerHTML +=`
+            modalFull.innerHTML +=`
             <div class="modal" id=${j}>
                 <div class="data">${element.dt_txt}</div>
-                <span class="close" >x</span>
+                
                 <div class="temperatura">Сейчас в Минске ${Math.round(celcia)} °C</div>
                 <div class="wind">Ветер: ${Math.round(wind)} м/c</div>
                 
@@ -79,7 +77,7 @@ export class WheatherWidget {
         }
 
     }
-    
+
 }
 
 
