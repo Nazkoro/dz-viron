@@ -4,6 +4,12 @@
 <body>
   <%- include('./partials/nav.ejs') %>
   <h1>Posts:</h1>
+  <button class="btn-old">
+    sort on old date
+  </button>
+  <!-- <button class="btn-new">
+    sort on new date
+  </button> -->
   <ul>
     <% if (posts.length) { %>
       <% posts.forEach(({ id, title, createdAt, text, author }) => { %>
@@ -33,6 +39,25 @@
           window.location.reload();
         });
       }
+
+      if (e.target.classList.contains("btn-old")) {
+        console.log(e.target);
+        fetch(`/posts/1`, {
+          method: 'GET',
+        }).then(() => {
+          window.location.reload();
+        });
+      }
+
+    //   if (e.target.classList.contains("btn-new")) {
+    //     console.log(e.target);
+    //   fetch(`/posts`, {
+    //     method: 'GET',
+    //   }).then(() => {
+    //     console.log('sort');
+    //     window.location.reload();
+    //   });
+    // }
     });
   </script>
 </body>

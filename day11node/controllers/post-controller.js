@@ -49,6 +49,28 @@ const getPosts = (req, res) => {
     .catch((error) => handleError(res, error));
 }
 
+const getSortOldPosts = (req, res) => {
+  console.log('=========');
+  console.log(req.params.value);
+  console.log('=========');
+  
+  const title = 'Posts';
+  Post
+    .find()
+    .sort({ createdAt: 1 })
+    .then(posts => res.render(createPath('posts'), { posts, title }))
+    .catch((error) => handleError(res, error));
+}
+
+// const getSortNewPosts = (req, res) => {
+//   const title = 'Posts';
+//   Post
+//     .find()
+//     .sort({ createdAt: 1 })
+//     .then(posts => res.render(createPath('posts'), { posts, title }))
+//     .catch((error) => handleError(res, error));
+// }
+
 const getAddPost = (req, res) => {
   const title = 'Add Post';
   res.render(createPath('add-post'), { title });
@@ -71,4 +93,6 @@ module.exports = {
   getPosts,
   getAddPost,
   addPost,
+  getSortOldPosts,
+  // getSortNewPosts,
 };
